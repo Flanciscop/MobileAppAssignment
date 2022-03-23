@@ -10,9 +10,13 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.finalassignment.AppDatabase;
+import com.example.finalassignment.DataConverter;
+import com.example.finalassignment.MainActivity;
 import com.example.finalassignment.R;
 
 public class AddCategoryActivity extends AppCompatActivity {
@@ -20,16 +24,22 @@ public class AddCategoryActivity extends AppCompatActivity {
     ImageView ivGenreImage;
     Bitmap bmpImage;
     Button btnPicture,btnSubmitGenre,btnCancelGenre;
+    CatDAO genreDao;
+    EditText etAddGenre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_category);
 
+        genreDao = AppDatabase.getDBInstance(this).genreDao();
         ivGenreImage = findViewById(R.id.ivGenreImage);
         btnPicture = findViewById(R.id.btnPicture);
         btnCancelGenre = findViewById(R.id.btnCancelGenre);
         btnSubmitGenre = findViewById(R.id.btnSubmitGenre);
+        etAddGenre = findViewById(R.id.etAddGenre);
+
+        Intent intent = new Intent(this, MainActivity.class);
 
         btnPicture.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -44,14 +54,14 @@ public class AddCategoryActivity extends AppCompatActivity {
         btnCancelGenre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(intent);
             }
         });
 
         btnSubmitGenre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+               addGenre();
             }
         });
     }
@@ -78,6 +88,27 @@ public class AddCategoryActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT
                 ).show();
             }
+        }
+    }
+
+    public void addGenre(){
+        if(etAddGenre.getText().toString().isEmpty() ||
+                bmpImage == null){
+            Toast.makeText(
+                    this,
+                    "Genre Data is missing",
+                    Toast.LENGTH_SHORT
+            ).show();
+        } else {
+            Genre genre = new Genre();
+            genre.setName(etAddGenre.getText().toString());
+            genre.setGenreImage(DataConverter.convertImage2ByteArray(bmpImage));
+            genreDao.insertGenre(genre);
+            Toast.makeText(
+                    this,
+                    "Insertion successful",
+                    Toast.LENGTH_SHORT
+            ).show();
         }
     }
 }

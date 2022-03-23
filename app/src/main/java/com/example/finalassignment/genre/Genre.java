@@ -18,6 +18,10 @@ public class Genre {
         this.genreImage = genreImage;
     }
 
+    public Genre() {
+
+    }
+
     public int getId() {
         return gid;
     }

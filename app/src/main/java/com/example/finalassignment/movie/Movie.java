@@ -2,12 +2,20 @@ package com.example.finalassignment.movie;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Movies")
+import com.example.finalassignment.genre.Genre;
+
+@Entity(tableName = "Movies",
+        foreignKeys = @ForeignKey(entity = Genre.class,
+            parentColumns = "gid",
+            childColumns = "gid",
+            onDelete = ForeignKey.NO_ACTION))
 public class Movie {
     @PrimaryKey(autoGenerate = true)
     int id;
+    int gid;
     String name;
     String director;
     String year;
@@ -20,6 +28,14 @@ public class Movie {
         this.director = director;
         this.year = year;
         this.poster = poster;
+    }
+
+    public int getGid() {
+        return gid;
+    }
+
+    public void setGid(int gid) {
+        this.gid = gid;
     }
 
     public int getId() {

@@ -5,47 +5,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".movie.DetailActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_margin="5dp">
 
 
     <ImageView
         android:id="@+id/ivAddPoster"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         />
     <Button
         android:id="@+id/btnAddPicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TAKE A PICTURE"
+        android:layout_margin="5dp"
         />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Movie Name"
+        android:layout_margin="5dp"
         />
     <EditText
         android:id="@+id/etAddMovie"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Year Released"
+        android:layout_margin="5dp"
         />
     <EditText
         android:id="@+id/etAddYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Director"
+        android:layout_margin="5dp"
         />
     <EditText
         android:id="@+id/etAddDirector"
@@ -57,18 +66,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_margin="5dp"
         >
         <Button
             android:id="@+id/btnAddMovie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SUBMIT ITEM"
+            android:layout_margin="5dp"
             />
         <Button
             android:id="@+id/btnCancelMovie"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CANCEL"
+            android:text="BACK"
+            android:layout_margin="5dp"
             />
     </LinearLayout>
 

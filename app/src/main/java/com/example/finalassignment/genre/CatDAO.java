@@ -11,13 +11,13 @@ import java.util.List;
 @Dao
 public interface CatDAO {
     @Query("Select * from Genres")
-    List<Genre> getAllUGenres();
+    List<Genre> getAllGenres();
     @Insert
-    void insertGenre(Genre user);
+    void insertGenre(Genre genre);
     @Update
-    void updateGenre(Genre user);
+    void updateGenre(Genre genre);
     @Delete
-    void deleteGenre(Genre user);
+    void deleteGenre(Genre genre);
     @Query("DELETE FROM Genres;")
     void deleteAllGenres();
 }
