@@ -2,9 +2,10 @@ package com.example.finalassignment.genre;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "Genres")
+@Entity(tableName = "Genres", indices = @Index(value = {"name"},unique = true))
 public class Genre {
     @PrimaryKey(autoGenerate = true)
     int gid;

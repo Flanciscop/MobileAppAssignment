@@ -9,8 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.finalassignment.genre.CatDAO;
-import com.example.finalassignment.genre.CatRVAdapter;
 import com.example.finalassignment.movie.AddItemActivity;
 import com.example.finalassignment.movie.DetailActivity;
 import com.example.finalassignment.movie.ItemDAO;

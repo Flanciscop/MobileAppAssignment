@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.finalassignment.genre.AddCategoryActivity;
 import com.example.finalassignment.genre.CatDAO;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         btnAddCat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(addCatIntent);
             }
         });
@@ -45,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         rvCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                TextView textView = (TextView) view.findViewById(R.id.tvCatName);
+                catIntent.putExtra("genreName",textView.getText().toString());
                 startActivity(catIntent);
             }
         });

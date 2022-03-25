@@ -9,13 +9,13 @@ import com.example.finalassignment.genre.Genre;
 
 @Entity(tableName = "Movies",
         foreignKeys = @ForeignKey(entity = Genre.class,
-            parentColumns = "gid",
-            childColumns = "gid",
+            parentColumns = "name",
+            childColumns = "genreName",
             onDelete = ForeignKey.NO_ACTION))
 public class Movie {
     @PrimaryKey(autoGenerate = true)
     int id;
-    int gid;
+    String genreName;
     String name;
     String director;
     String year;
@@ -30,12 +30,12 @@ public class Movie {
         this.poster = poster;
     }
 
-    public int getGid() {
-        return gid;
+    public String getGenreName() {
+        return genreName;
     }
 
-    public void setGid(int gid) {
-        this.gid = gid;
+    public void setGenreName(String genreName) {
+        this.genreName = genreName;
     }
 
     public int getId() {
