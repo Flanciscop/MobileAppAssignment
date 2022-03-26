@@ -22,4 +22,10 @@ public interface ItemDAO {
     void deleteMovie(Movie movie);
     @Query("DELETE FROM Movies;")
     void deleteAllMovies();
+
+    @Query("SELECT * from Movies Where genreName= :genreName;")
+    List<Movie> getMovieByGenre(String genreName);
+
+    @Query("SELECT * from Movies Where name = :movieName;")
+    Movie selectMovie(String movieName);
 }

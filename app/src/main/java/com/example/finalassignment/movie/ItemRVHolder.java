@@ -1,5 +1,7 @@
 package com.example.finalassignment.movie;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ public class ItemRVHolder extends RecyclerView.ViewHolder{
     CardView cvItem;
     ImageView ivItem;
     TextView tvName, tvYear, tvDirector;
+    Context context;
 
     public ItemRVHolder(@NonNull View itemView) {
         super(itemView);
@@ -24,11 +27,14 @@ public class ItemRVHolder extends RecyclerView.ViewHolder{
         tvYear = itemView.findViewById(R.id.tvYear);
         tvDirector = itemView.findViewById(R.id.tvDirector);
 
+        Intent seeMovieIntent = new Intent(context, DetailActivity.class);
+
         cvItem.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Toast.makeText(itemView.getContext(),
-                        "Card Clicked", Toast.LENGTH_SHORT).show();
+                TextView textView = (TextView) v.findViewById(R.id.tvName);
+                seeMovieIntent.putExtra("movieName",textView.getText().toString());
+                context.startActivity(seeMovieIntent);
             }
         });
     }

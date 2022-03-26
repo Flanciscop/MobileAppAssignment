@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     CatDAO genreDao;
     CatRVAdapter genreAdapter;
     RecyclerView rvCategory;
-    Intent addCatIntent, catIntent;
+    Intent addCatIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,23 +34,14 @@ public class MainActivity extends AppCompatActivity {
         rvCategory.setAdapter(genreAdapter);
 
         addCatIntent = new Intent(this, AddCategoryActivity.class);
-        catIntent = new Intent(this,ListActivity.class);
 
         btnAddCat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 startActivity(addCatIntent);
             }
         });
 
-        rvCategory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TextView textView = (TextView) view.findViewById(R.id.tvCatName);
-                catIntent.putExtra("genreName",textView.getText().toString());
-                startActivity(catIntent);
-            }
-        });
+
     }
 }

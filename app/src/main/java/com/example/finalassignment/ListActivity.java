@@ -19,19 +19,24 @@ public class ListActivity extends AppCompatActivity {
     ItemDAO movieDAO;
     ItemRVAdapter movieAdapter;
     RecyclerView rvItem;
-    Intent addMovieIntent,seeMovieIntent;
+    Intent addMovieIntent,seeMovieIntent, intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        intent = getIntent();
+
         movieDAO = AppDatabase.getDBInstance(this).movieDAO();
         btnAddItem = findViewById(R.id.btnAddItem);
-        movieAdapter = new ItemRVAdapter(movieDAO.getAllMovies());
-        rvItem = findViewById(R.id.rvCategory);
+        movieAdapter = new ItemRVAdapter(movieDAO.getMovieByGenre(intent.getStringExtra("genreName")));
+        rvItem = findViewById(R.id.rvItem);
         rvItem.setLayoutManager(new LinearLayoutManager(this));
         rvItem.setAdapter(movieAdapter);
+
+
+        btnAddItem.setText("Add "+intent.getStringExtra("genreName")+" movie");
 
         addMovieIntent = new Intent(this, AddItemActivity.class);
         seeMovieIntent = new Intent(this, DetailActivity.class);
@@ -46,6 +51,7 @@ public class ListActivity extends AppCompatActivity {
         rvItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(seeMovieIntent);
             }
         });

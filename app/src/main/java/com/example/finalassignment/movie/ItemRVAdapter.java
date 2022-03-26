@@ -14,7 +14,9 @@ import java.util.List;
 public class ItemRVAdapter extends RecyclerView.Adapter<ItemRVHolder> {
     List<Movie> movies;
 
-    public ItemRVAdapter(List<Movie> movies) { this.movies = movies; }
+    public ItemRVAdapter(List<Movie> movies) {
+        this.movies = movies;
+    }
 
     @NonNull
     @Override
@@ -28,7 +30,6 @@ public class ItemRVAdapter extends RecyclerView.Adapter<ItemRVHolder> {
     @Override
     public void onBindViewHolder(@NonNull ItemRVHolder holder, int position) {
         Movie movie = movies.get(position);
-        //if statement here to check category
         holder.tvName.setText(movie.getName());
         holder.tvDirector.setText(movie.getDirector());
         holder.tvYear.setText(movie.getYear());
