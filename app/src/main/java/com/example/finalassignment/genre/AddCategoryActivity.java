@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -19,11 +21,14 @@ import com.example.finalassignment.DataConverter;
 import com.example.finalassignment.MainActivity;
 import com.example.finalassignment.R;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 public class AddCategoryActivity extends AppCompatActivity {
     final int CAMERA_INTENT = 786;
     ImageView ivGenreImage;
     Bitmap bmpImage;
-    Button btnPicture,btnSubmitGenre,btnCancelGenre;
+    Button btnPicture,btnSubmitGenre,btnCancelGenre, btnGallery;
     CatDAO genreDao;
     EditText etAddGenre;
 
@@ -38,6 +43,7 @@ public class AddCategoryActivity extends AppCompatActivity {
         btnCancelGenre = findViewById(R.id.btnCancelGenre);
         btnSubmitGenre = findViewById(R.id.btnSubmitGenre);
         etAddGenre = findViewById(R.id.etAddGenre);
+        btnGallery = findViewById(R.id.btnGallery);
 
         Intent intent = new Intent(this, MainActivity.class);
 
@@ -48,6 +54,16 @@ public class AddCategoryActivity extends AppCompatActivity {
                 if(intent.resolveActivity(getPackageManager()) != null){
                     startActivityForResult(intent, CAMERA_INTENT);
                 }
+            }
+        });
+
+        btnGallery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(Intent.ACTION_GET_CONTENT);
+                intent1.setType("image/*");
+
+                startActivityForResult(Intent.createChooser(intent1,"Pick an image"), 1);
             }
         });
 
@@ -87,6 +103,16 @@ public class AddCategoryActivity extends AppCompatActivity {
                         "Result not OK",
                         Toast.LENGTH_SHORT
                 ).show();
+            }
+        } else if(requestCode == 1){
+            if (resultCode == RESULT_OK ){
+                try {
+                    InputStream inputStream = getContentResolver().openInputStream(data.getData());
+                    bmpImage = BitmapFactory.decodeStream(inputStream);
+                    ivGenreImage.setImageBitmap(bmpImage);
+                } catch (FileNotFoundException e){
+                    e.printStackTrace();
+                }
             }
         }
     }

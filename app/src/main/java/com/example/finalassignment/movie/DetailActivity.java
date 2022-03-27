@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.finalassignment.AppDatabase;
+import com.example.finalassignment.DataConverter;
 import com.example.finalassignment.R;
 
 public class DetailActivity extends AppCompatActivity {
@@ -34,6 +35,11 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         thisMovie = movieDAO.selectMovie(intent.getStringExtra("movieName"));
 
-        
+        ivPoster.setImageBitmap(DataConverter.converByteArray2Image(
+                thisMovie.getPoster()));
+        etMovie.setText(thisMovie.getName());
+        etYear.setText(thisMovie.getYear());
+        etDirector.setText(thisMovie.getDirector());
+
     }
 }
