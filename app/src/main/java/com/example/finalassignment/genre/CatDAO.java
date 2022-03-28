@@ -20,4 +20,7 @@ public interface CatDAO {
     void deleteGenre(Genre genre);
     @Query("DELETE FROM Genres;")
     void deleteAllGenres();
+
+    @Query("Select name from Genres")
+    List<String> getGenreList();
 }

@@ -15,7 +15,7 @@ import com.example.finalassignment.movie.Movie;
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase appDB = null;
-    public abstract CatDAO genreDao();
+    public abstract CatDAO genreDAO();
     public abstract ItemDAO movieDAO();
 
     public static synchronized AppDatabase getDBInstance(Context context){

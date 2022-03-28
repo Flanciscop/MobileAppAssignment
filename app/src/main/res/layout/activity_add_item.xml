@@ -12,8 +12,8 @@
 
     <ImageView
         android:id="@+id/ivAddPoster"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_margin="5dp"
         />
     <Button
@@ -27,7 +27,7 @@
         android:id="@+id/btnAddGallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TAKE A PICTURE"
+        android:text="GO TO GALLERY"
         android:layout_margin="5dp"
         />
 
@@ -42,6 +42,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Genre"
+        />
+    <Spinner
+        android:id="@+id/spnGenre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         />
 
     <TextView

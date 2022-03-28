@@ -37,7 +37,7 @@ public class AddCategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_category);
 
-        genreDao = AppDatabase.getDBInstance(this).genreDao();
+        genreDao = AppDatabase.getDBInstance(this).genreDAO();
         ivGenreImage = findViewById(R.id.ivGenreImage);
         btnPicture = findViewById(R.id.btnPicture);
         btnCancelGenre = findViewById(R.id.btnCancelGenre);
@@ -56,7 +56,6 @@ public class AddCategoryActivity extends AppCompatActivity {
                 }
             }
         });
-
         btnGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +72,6 @@ public class AddCategoryActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         btnSubmitGenre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,7 +130,7 @@ public class AddCategoryActivity extends AppCompatActivity {
             genreDao.insertGenre(genre);
             Toast.makeText(
                     this,
-                    "Insertion successful",
+                    "Genre Added",
                     Toast.LENGTH_SHORT
             ).show();
         }

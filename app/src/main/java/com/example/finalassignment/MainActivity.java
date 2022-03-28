@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        genreDao = AppDatabase.getDBInstance(this).genreDao();
+        genreDao = AppDatabase.getDBInstance(this).genreDAO();
         btnAddCat = findViewById(R.id.btnAddCat);
         genreAdapter = new CatRVAdapter(genreDao.getAllGenres());
         rvCategory = findViewById(R.id.rvCategory);

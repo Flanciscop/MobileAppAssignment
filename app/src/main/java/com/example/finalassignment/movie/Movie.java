@@ -7,11 +7,14 @@ import androidx.room.PrimaryKey;
 
 import com.example.finalassignment.genre.Genre;
 
-@Entity(tableName = "Movies",
-        foreignKeys = @ForeignKey(entity = Genre.class,
+/*
+
+        ,foreignKeys = @ForeignKey(entity = Genre.class,
             parentColumns = "name",
             childColumns = "genreName",
-            onDelete = ForeignKey.NO_ACTION))
+            onDelete = ForeignKey.NO_ACTION)
+ */
+@Entity(tableName = "Movies")
 public class Movie {
     @PrimaryKey(autoGenerate = true)
     int id;
@@ -28,6 +31,10 @@ public class Movie {
         this.director = director;
         this.year = year;
         this.poster = poster;
+    }
+
+    public Movie() {
+
     }
 
     public String getGenreName() {
