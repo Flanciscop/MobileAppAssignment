@@ -14,12 +14,14 @@ import java.util.List;
 public interface ItemDAO {
     @Query("Select * from Movies")
     List<Movie> getAllMovies();
+
     @Insert
     void insertMovie(Movie movie);
     @Update
     void updateMovie(Movie movie);
     @Delete
     void deleteMovie(Movie movie);
+
     @Query("DELETE FROM Movies;")
     void deleteAllMovies();
 

@@ -12,8 +12,8 @@
 
     <ImageView
         android:id="@+id/ivAddPoster"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_margin="5dp"
         />
     <Button
@@ -48,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Genre"
+        android:layout_margin="5dp"
         />
     <Spinner
         android:id="@+id/spnGenre"

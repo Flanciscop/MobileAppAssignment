@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.finalassignment.movie.AddItemActivity;
 import com.example.finalassignment.movie.DetailActivity;
@@ -20,6 +21,7 @@ public class ListActivity extends AppCompatActivity {
     ItemRVAdapter movieAdapter;
     RecyclerView rvItem;
     Intent addMovieIntent, intent;
+    TextView tvGenreList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,10 @@ public class ListActivity extends AppCompatActivity {
         rvItem.setLayoutManager(new LinearLayoutManager(this));
         rvItem.setAdapter(movieAdapter);
 
+        tvGenreList = findViewById(R.id.tvGenreList);
+
+        tvGenreList.setText(intent.getStringExtra("genreName")+" Movies");
+
         addMovieIntent = new Intent(this, AddItemActivity.class);
 
         btnAddItem.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +50,5 @@ public class ListActivity extends AppCompatActivity {
                 startActivity(addMovieIntent);
             }
         });
-
-
     }
 }

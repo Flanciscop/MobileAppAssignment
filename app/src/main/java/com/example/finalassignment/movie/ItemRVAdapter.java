@@ -33,7 +33,6 @@ public class ItemRVAdapter extends RecyclerView.Adapter<ItemRVHolder> {
         holder.tvName.setText(movie.getName());
         holder.tvDirector.setText(movie.getDirector());
         holder.tvYear.setText(movie.getYear());
-
         holder.ivItem.setImageBitmap(
                 DataConverter.converByteArray2Image(
                         movie.getPoster()));

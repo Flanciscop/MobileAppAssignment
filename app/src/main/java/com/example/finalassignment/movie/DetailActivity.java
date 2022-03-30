@@ -39,8 +39,7 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         thisMovie = movieDAO.selectMovie(intent.getStringExtra("movieName"));
 
-        ivPoster.setImageBitmap(DataConverter.converByteArray2Image(
-                thisMovie.getPoster()));
+        ivPoster.setImageBitmap(DataConverter.converByteArray2Image(thisMovie.getPoster()));
         etMovie.setText(thisMovie.getName());
         etYear.setText(thisMovie.getYear());
         etDirector.setText(thisMovie.getDirector());
@@ -51,6 +50,7 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 movieDAO.updateMovie(thisMovie);
+
                 toastMsg();
             }
         });

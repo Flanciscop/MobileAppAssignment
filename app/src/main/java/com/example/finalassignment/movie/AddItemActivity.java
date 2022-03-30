@@ -63,6 +63,7 @@ public class AddItemActivity extends AppCompatActivity {
 
         Intent intent1 = new Intent(this, MainActivity.class);
 
+
         btnAddPicture.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -122,8 +123,8 @@ public class AddItemActivity extends AppCompatActivity {
         }
     }
 
+
     public void addMovie(){
-        Intent intent = getIntent();
         if(etAddMovie.getText().toString().isEmpty() ||
                 etAddYear.getText().toString().isEmpty() ||
                 etAddDirector.getText().toString().isEmpty() ||
@@ -143,7 +144,7 @@ public class AddItemActivity extends AppCompatActivity {
             movieDAO.insertMovie(movie);
             Toast.makeText(
                     this,
-                    intent.getStringExtra("Movie Added"),
+                    "Movie Added",
                     Toast.LENGTH_SHORT
             ).show();
         }

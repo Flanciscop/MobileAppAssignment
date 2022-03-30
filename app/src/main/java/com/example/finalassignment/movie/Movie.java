@@ -25,8 +25,9 @@ public class Movie {
     @ColumnInfo(typeAffinity = ColumnInfo.BLOB)
     byte[] poster;
 
-    public Movie(int id, String name, String director, String year, byte[] poster) {
+    public Movie(int id, String genreName, String name, String director, String year, byte[] poster) {
         this.id = id;
+        this.genreName = genreName;
         this.name = name;
         this.director = director;
         this.year = year;
@@ -35,6 +36,13 @@ public class Movie {
 
     public Movie() {
 
+    }
+    public Movie(String genreName, String name, String director, String year, byte[] poster) {
+        this.genreName = genreName;
+        this.name = name;
+        this.director = director;
+        this.year = year;
+        this.poster = poster;
     }
 
     public String getGenreName() {
